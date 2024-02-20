@@ -1,6 +1,9 @@
+import 'package:apni_dukan_app/Screens/Forget_Password_Screen.dart';
+import 'package:apni_dukan_app/Screens/Login_Page_Screen.dart';
 import 'package:apni_dukan_app/Screens/Sign_Up_Screen.dart';
 import 'package:apni_dukan_app/Screens/Splash_Screen.dart';
 import 'package:apni_dukan_app/Screens/Tutorial_Screen.dart';
+import 'package:apni_dukan_app/Screens/Verification_Code.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: VerificationCode(),
     );
   }
 }

@@ -1,16 +1,16 @@
+import 'package:apni_dukan_app/Screens/Forget_Password_Screen.dart';
 import 'package:apni_dukan_app/Screens/Onboarding_Screen3.dart';
 import 'package:apni_dukan_app/Screens/Tutorial_Screen.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  final TextEditingController _nameController = TextEditingController();
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isNameValid = false;
@@ -21,16 +21,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
-
-  void _validateName(String value) {
-    setState(() {
-      _isNameValid = value.isNotEmpty;
-    });
   }
 
   void _validateEmail(String value) {
@@ -69,16 +62,16 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   height: 120,
                   width: 120,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 195, 90, 52),
                     shape: BoxShape.circle,
                   ),
                   child: Center(child: Icon(Icons.check, color: Colors.white)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 45,
                 ),
-                Text(
+                const Text(
                   'Success',
                   style: TextStyle(
                     fontSize: 25,
@@ -87,26 +80,26 @@ class _SignUpPageState extends State<SignUpPage> {
                     decoration: TextDecoration.none,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   'Your account has been successfully ',
                   style: TextStyle(
                     fontSize: 17,
-                    color: const Color.fromARGB(81, 0, 0, 0),
+                    color: Color.fromARGB(81, 0, 0, 0),
                     decoration: TextDecoration.none,
                   ),
                 ),
-                Text(
+                const Text(
                   'registered ',
                   style: TextStyle(
                     fontSize: 17,
-                    color: const Color.fromARGB(81, 0, 0, 0),
+                    color: Color.fromARGB(81, 0, 0, 0),
                     decoration: TextDecoration.none,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Container(
@@ -144,7 +137,7 @@ class _SignUpPageState extends State<SignUpPage> {
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          Image.asset('assets/images/image4.png'),
+          Image.asset('assets/images/image8.png'),
           Align(
             alignment: Alignment.bottomCenter,
             child: ClipRRect(
@@ -154,7 +147,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               child: SingleChildScrollView(
                 child: Container(
-                  height: size.height * 0.69,
+                  height: size.height * 0.71,
                   width: size.width * 0.999,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -164,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       children: [
                         const Text(
-                          'SIGN UP',
+                          'LOGIN',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -172,29 +165,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         SizedBox(height: size.height * 0.03),
-                        SizedBox(
-                          width: size.width * 0.8,
-                          height: size.height * 0.1,
-                          child: TextFormField(
-                            controller: _nameController,
-                            onChanged: _validateName,
-                            decoration: InputDecoration(
-                              labelText: 'Name',
-                              border: const OutlineInputBorder(),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 195, 90, 52),
-                                ),
-                              ),
-                              suffixIcon: _isNameValid
-                                  ? const Icon(
-                                      Icons.check,
-                                      color: Color.fromARGB(255, 195, 90, 52),
-                                    )
-                                  : null,
-                            ),
-                          ),
-                        ),
                         SizedBox(
                           width: size.width * 0.8,
                           height: size.height * 0.1,
@@ -220,7 +190,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         SizedBox(
                           width: size.width * 0.8,
-                          height: size.height * 0.1,
+                          height: size.height * 0.08,
                           child: TextFormField(
                             controller: _passwordController,
                             onChanged: _validatePassword,
@@ -249,6 +219,29 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                               ),
                             ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width * 0.8,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ForgetPassword()));
+                                },
+                                child: const Text(
+                                  'Forget Password?',
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 195, 90, 52),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         Padding(
@@ -316,7 +309,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             child: const Center(
                               child: Text(
-                                'SIGN UP',
+                                'LOGIN',
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.white,
@@ -325,6 +318,24 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ),
                           ),
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        const Text(
+                          'OR',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 195, 90, 52),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Image.asset('assets/images/image9.png'),
+                            Image.asset('assets/images/image10.png'),
+                            Image.asset('assets/images/image11.png'),
+                          ],
                         ),
                         SizedBox(height: size.height * 0.03),
                         RichText(
@@ -371,7 +382,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
           Positioned(
-            top: size.height * 0.31,
+            top: size.height * 0.29,
             left: size.width * 0.0,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
@@ -390,7 +401,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             builder: (_) => const TutorialScreen()),
                       );
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       size: 30,
                       color: Colors.white,

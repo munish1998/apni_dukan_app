@@ -17,97 +17,99 @@ class _TutorialScreenState extends State<TutorialScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          PageView(
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            controller: _controller,
-            children: const [
-              TutorialScreen1(),
-              TutorialScreen2(),
-              TutorialScreen3(),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 30.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildIndicator(0),
-                  buildIndicator(1),
-                  buildIndicator(2),
-                ],
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            PageView(
+              onPageChanged: (index) {
+                setState(() {
+                  _currentPage = index;
+                });
+              },
+              controller: _controller,
+              children: const [
+                TutorialScreen1(),
+                TutorialScreen2(),
+                TutorialScreen3(),
+              ],
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 30.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    buildIndicator(0),
+                    buildIndicator(1),
+                    buildIndicator(2),
+                  ],
+                ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment(0, 0.95),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (_) => const SignUpPage()),
-                    );
-                  },
-                  child: const Text(
-                    'Skip',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 230,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    if (_currentPage < 2) {
-                      _controller.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn,
-                      );
-                    } else {
+            Align(
+              alignment: Alignment(0, 0.95),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (_) => const SignUpPage()),
                       );
-                    }
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: _currentPage < 2
-                          ? Color.fromARGB(255, 195, 90, 52)
-                          : Color.fromARGB(255, 195, 90, 52),
+                    },
+                    child: const Text(
+                      'Skip',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    child: Center(
-                      child: Text(
-                        _currentPage < 2 ? 'Next' : 'Done',
-                        style: const TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  ),
+                  SizedBox(
+                    width: 230,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      if (_currentPage < 2) {
+                        _controller.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn,
+                        );
+                      } else {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) => const SignUpPage()),
+                        );
+                      }
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: _currentPage < 2
+                            ? Color.fromARGB(255, 195, 90, 52)
+                            : Color.fromARGB(255, 195, 90, 52),
+                      ),
+                      child: Center(
+                        child: Text(
+                          _currentPage < 2 ? 'Next' : 'Done',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

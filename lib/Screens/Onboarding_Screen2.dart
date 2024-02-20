@@ -55,17 +55,17 @@ class _TutorialScreen2State extends State<TutorialScreen2> {
               borderRadius: const BorderRadius.only(
                 topRight: Radius.elliptical(
                   180,
-                  1,
+                  180,
                 ),
-                topLeft: Radius.elliptical(90, 1),
+                topLeft: Radius.elliptical(100, 100),
                 bottomLeft: Radius.circular(45),
               ),
               child: Container(
-                height: 370,
+                height: 440,
                 width: 420,
                 color: Colors.white,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 45, left: 40),
+                  padding: const EdgeInsets.only(top: 65, left: 40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     // mainAxisAlignment: MainAxisAlignment.start,
@@ -94,7 +94,7 @@ class _TutorialScreen2State extends State<TutorialScreen2> {
                             color: Colors.black),
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 30,
                       ),
                       const Text(
                         'In publishing and graph design lorem',

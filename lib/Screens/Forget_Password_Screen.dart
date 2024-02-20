@@ -2,15 +2,14 @@ import 'package:apni_dukan_app/Screens/Onboarding_Screen3.dart';
 import 'package:apni_dukan_app/Screens/Tutorial_Screen.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({Key? key}) : super(key: key);
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  final TextEditingController _nameController = TextEditingController();
+class _ForgetPasswordState extends State<ForgetPassword> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isNameValid = false;
@@ -21,16 +20,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
-
-  void _validateName(String value) {
-    setState(() {
-      _isNameValid = value.isNotEmpty;
-    });
   }
 
   void _validateEmail(String value) {
@@ -69,16 +61,17 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   height: 120,
                   width: 120,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 195, 90, 52),
                     shape: BoxShape.circle,
                   ),
-                  child: Center(child: Icon(Icons.check, color: Colors.white)),
+                  child: const Center(
+                      child: Icon(Icons.check, color: Colors.white)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 45,
                 ),
-                Text(
+                const Text(
                   'Success',
                   style: TextStyle(
                     fontSize: 25,
@@ -87,26 +80,26 @@ class _SignUpPageState extends State<SignUpPage> {
                     decoration: TextDecoration.none,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   'Your account has been successfully ',
                   style: TextStyle(
                     fontSize: 17,
-                    color: const Color.fromARGB(81, 0, 0, 0),
+                    color: Color.fromARGB(81, 0, 0, 0),
                     decoration: TextDecoration.none,
                   ),
                 ),
-                Text(
+                const Text(
                   'registered ',
                   style: TextStyle(
                     fontSize: 17,
-                    color: const Color.fromARGB(81, 0, 0, 0),
+                    color: Color.fromARGB(81, 0, 0, 0),
                     decoration: TextDecoration.none,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Container(
@@ -144,9 +137,9 @@ class _SignUpPageState extends State<SignUpPage> {
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          Image.asset('assets/images/image4.png'),
+          Image.asset('assets/images/image12.png'),
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.center,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(40),
@@ -154,7 +147,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               child: SingleChildScrollView(
                 child: Container(
-                  height: size.height * 0.69,
+                  height: size.height * 00.51,
                   width: size.width * 0.999,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -164,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       children: [
                         const Text(
-                          'SIGN UP',
+                          'FORGET PASSWORD?',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -172,29 +165,23 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         SizedBox(height: size.height * 0.03),
-                        SizedBox(
-                          width: size.width * 0.8,
-                          height: size.height * 0.1,
-                          child: TextFormField(
-                            controller: _nameController,
-                            onChanged: _validateName,
-                            decoration: InputDecoration(
-                              labelText: 'Name',
-                              border: const OutlineInputBorder(),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 195, 90, 52),
-                                ),
-                              ),
-                              suffixIcon: _isNameValid
-                                  ? const Icon(
-                                      Icons.check,
-                                      color: Color.fromARGB(255, 195, 90, 52),
-                                    )
-                                  : null,
-                            ),
+                        const Text(
+                          'Enter your email or phone number',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.grey,
+                            // fontWeight: FontWeight.bold,
                           ),
                         ),
+                        const Text(
+                          'we will send you confirm code',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.grey,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.04),
                         SizedBox(
                           width: size.width * 0.8,
                           height: size.height * 0.1,
@@ -218,91 +205,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: size.width * 0.8,
-                          height: size.height * 0.1,
-                          child: TextFormField(
-                            controller: _passwordController,
-                            onChanged: _validatePassword,
-                            obscureText:
-                                !_isPasswordVisible, // Hide/show password based on visibility state
-                            decoration: InputDecoration(
-                              labelText: 'Password',
-                              border: const OutlineInputBorder(),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 195, 90, 52),
-                                ),
-                              ),
-                              suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _isPasswordVisible =
-                                        !_isPasswordVisible; // Toggle password visibility
-                                  });
-                                },
-                                child: Icon(
-                                  _isPasswordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: size.width * 0.05, top: size.height * 0.02),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Checkbox(
-                                value: _isChecked,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _isChecked = newValue ?? false;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                width: size.width * 0.02,
-                              ),
-                              RichText(
-                                text: const TextSpan(
-                                  style: TextStyle(fontSize: 15),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: 'I agree to the Grocery ',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'Terms of Service ',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 195, 90, 52),
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'and\n ',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'privacy policy',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 195, 90, 52),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: size.height * 0.03),
+                        SizedBox(height: size.height * 0.02),
                         GestureDetector(
                           onTap: () {
                             _showSignUpAlert();
@@ -316,7 +219,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             child: const Center(
                               child: Text(
-                                'SIGN UP',
+                                'SEND OTP',
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.white,
@@ -326,25 +229,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: size.height * 0.03),
-                        RichText(
-                          text: const TextSpan(
-                            style: TextStyle(fontSize: 15),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Already have an account? ',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'Login',
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 195, 90, 52),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Image.asset(
+                            'assets/images/image6.png',
+                            color: Color.fromARGB(255, 195, 90, 52),
                           ),
                         ),
                       ],
@@ -363,15 +252,8 @@ class _SignUpPageState extends State<SignUpPage> {
               color: Colors.grey,
             ),
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Image.asset(
-              'assets/images/image6.png',
-              color: Color.fromARGB(255, 195, 90, 52),
-            ),
-          ),
           Positioned(
-            top: size.height * 0.31,
+            top: size.height * 00.24,
             left: size.width * 0.0,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
@@ -390,7 +272,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             builder: (_) => const TutorialScreen()),
                       );
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       size: 30,
                       color: Colors.white,
